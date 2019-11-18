@@ -1,3 +1,9 @@
+variable "access_key" {
+  default = ""
+}
+variable "secret_key" {
+  default = ""
+}
 provider "aws" {
   profile    = "default"
   region     = var.region
@@ -6,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
-  ami           = "ami-087855b6c8b59a9e4"
+  ami           = var.amis[var.region]
   instance_type = "t2.micro"
 }
 
